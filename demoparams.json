@@ -1,0 +1,15 @@
+[
+    {
+        "ParameterValue" : "mytest",
+        "ParameterKey": "InstanceName"
+    }, 
+    {
+        "ParameterValue" : "mytestgroup",
+        "ParameterKey": "GroupName"
+    }, 
+    {
+        "ParameterValue" : "ami-0ebf610b4c383a3ee",
+        "ParameterKey": "ImageId"
+    } 
+    
+]

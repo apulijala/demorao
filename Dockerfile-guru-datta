@@ -1,0 +1,4 @@
+FROM parent-spring:latest
+COPY target/gs-spring-boot-0.1.0.jar /app/my-spring-boot
+ENTRYPOINT [ "java" ]
+CMD  ["-jar", "gs-spring-boot-0.1.0.jar"]

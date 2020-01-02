@@ -1,0 +1,22 @@
+[
+    {
+        "ParameterKey": "ImageId",
+        "ParameterValue" : "ami-0a0cb6c7bcb2e4c51"
+        
+    }, 
+    {
+        "ParameterKey": "InstanceType",
+        "ParameterValue" : "t2.micro"
+        
+    }
+    {
+        "ParameterKey": "GroupName",
+        "ParameterValue" : "RaoDemoSec"
+        
+    },
+    {
+        "ParameterKey": "GroupDescription",
+        "ParameterValue" : "Opening up port 8080 and 22 to outside world"
+        
+    }
+]

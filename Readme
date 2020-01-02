@@ -1,0 +1,106 @@
+9:47
+----
+Follow the following steps.
+
+On Your local machine. 
+First compile and build jar file
+ mvn package
+
+First build an image.
+sudo docker image build -t my-spring-boot:1.0
+
+Teo verfiy fi image is there 
+
+sudo docker image ls -a | grep "my-spring-boot"
+
+Test the image is working fien by creating a container form the image.
+
+centos path
+Run the container In daemon mode.
+sudo docker container run -d -p 9000:8080 --name test my-spring-boot:1.0
+
+For debugging.
+sudo docker container run -it -p 8085:8080 --name test --entrypoint /bin/sh  my-spring-boot:1.0
+
+Shell script 
+should take port as an option, jar file as optin.
+
+
+
+For Microservices using Docker inheritence.
+Build a base image called parent-spring:latest
+
+Inherit another image rom this base and call it as guru-datta
+sudo docker image build -t guru-datta:1.0 --file Dockerfile-guru-datta .
+
+
+mvn package
+sudo docker image build -t guru-datta:1.0 --file Dockerfile-guru-datta .
+sudo docker container run -d -p 9001:8080 --name test guru-datta:1.0
+
+Docker hub url
+https://hub.docker.com/u/arvubd
+
+To push an image.
+tag it first.
+sudo docker image tag guru-datta:1.0 arvubd/guru-datta:latest
+sudo docker push arvubd/guru-datta:latest
+
+sudo docker push --help
+Dekete all containers.
+sudo docker container rm -f $(sudo docker container ls -aq)
+0.0.0.0/0
+
+# ENTRYPOINT [ "java -jar" ]
+
+Deploying the same to cloud and build our own image
+GUI Steps.
+
+We need security group and key pair.
+
+1) create Key Pair.
+EC2 ->> 
+
+
+First launch instance.
+
+
+CloudFormatin.
+
+14:09 - to fix the error.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

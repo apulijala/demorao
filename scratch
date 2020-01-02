@@ -1,0 +1,15 @@
+mvnhome=/home/arvind/software/maven/apache-maven-3.5.4
+jdkhome=/home/arvind/software/java/jdk1.8.0_181
+
+export MAVEN_HOME="$mvnhome"
+export JDK_HOME="$jdkhome"
+export PATH=$PATH:$MAVEN_HOME/bin:$JDK_HOME/bin
+
+# build the packaage. 
+echo "Building the package "
+result=$(mvn clean install && mvn package)
+set -- $(ls -l "target/gs-spring-boot-0.1.0.jar" )
+if [ "$2" -eq 1 ]
+then 
+    echo "$(ls target/gs-spring-boot-0.1.0.jar) package sucessfully built "
+fi

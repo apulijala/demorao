@@ -1,0 +1,66 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Master stack: PathToMasterStackFile'
+Parameters:
+  ImageId:
+    Description: Amazon image on which instance is based.
+    Type: String
+      
+  KeyName: 
+    Description: Key Name to enter ssh.
+    Type: String
+    Default: "RaoDemo"
+
+  InstanceName: 
+    Description: Key Name to enter ssh.
+    Type: String
+  
+  GroupName: 
+    Description: Key Name to enter ssh.
+    Type: String
+    
+
+  InstanceType:
+    Description: Instance choose only from free t2.micro, t2.nano, t2.small, t1.micro
+    Type: String
+    AllowedValues:
+    - t2.micro
+    - t2.nano
+    - t2.small
+    - t1.micro
+    Default: "t2.micro"
+  
+Resources:
+ 
+  MySecurity:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: !Ref GroupName
+      GroupDescription:  "Group Description"
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 8080
+          ToPort: 8080
+          CidrIp: 0.0.0.0/0
+      Tags:
+        - Key: "Name"
+          Value: !Ref GroupName
+  MyInstance:
+    Type: "AWS::EC2::Instance"
+    Properties:
+      ImageId:  !Ref ImageId
+      InstanceType: !Ref InstanceType
+      KeyName: !Ref KeyName
+      SecurityGroupIds:
+        - !GetAtt  MySecurity.GroupId
+      Tags:
+       - Key: "Name"
+         Value: !Ref InstanceName
+Outputs:
+  DNSName: 
+    Value : !GetAtt  MyInstance.PublicDnsName
+  PublicIP:
+    Value: !GetAtt  MyInstance.PublicIp
